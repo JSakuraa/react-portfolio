@@ -34,9 +34,9 @@ export default {
       type: "string",
       options: {
         list: [
-          { value: "personal", title: "Personal" },
-          { value: "work", title: "Work" },
-          { value: "school", title: "School" },
+          { value: "Personal", title: "Personal" },
+          { value: "Work", title: "Work" },
+          { value: "School", title: "School" },
         ],
       },
     },

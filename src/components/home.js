@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
-const words = ["Developer", "Designer", "Entreprenuer", "Video Game Enthusiast"];
+const words = ["Developer", "Designer", "Video Game Enthusiast", "Entreprenuer"];
 
 export default function Home() {
   const [index, setIndex] = useState(0);
