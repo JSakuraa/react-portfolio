@@ -9,14 +9,14 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-export default function SinglePost() {
+export default function SinglePost ({blocks}) {
   const [singlePost, setSinglePost] = useState(null);
   const { slug } = useParams();
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[slug.current == "${slug}""]{
+        `*[slug.current == "${slug}"]{
             title,
             _id,
             slug,
@@ -43,10 +43,10 @@ export default function SinglePost() {
         <header className="relative">
           <div className="absolute h-full w-full flex items-center justify-center p-8">
             <div className="bg-light bg-opacity-75 rounded p-12">
-              <h1 className="cursive text-3xl lg:text-6xl mb-4">
+              <h1 className="cursive text-3xl lg:text-6xl mb-4 text-white">
                 {singlePost.title}
               </h1>
-              <div className="flex justify-center text-white">
+              <div className="flex justify-center text-orange">
                 <img
                   src={urlFor(singlePost.authorImage).url()}
                   alt={singlePost.name}
