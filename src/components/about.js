@@ -1,8 +1,8 @@
+import BlockContent from "@sanity/block-content-to-react";
+import ImageUrlBuilder from "@sanity/image-url";
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import manarola from "../manarola.jpg";
-import ImageUrlBuilder from "@sanity/image-url";
-import BlockContent from "@sanity/block-content-to-react";
 
 const builder = ImageUrlBuilder(sanityClient);
 function urlFor(source) {
@@ -18,7 +18,8 @@ export default function About() {
         `*[_type == "author"]{
             name,
             bio,
-            "authorImage": image.asset->url
+            "authorImage": image.asset->url,
+            resume
         }`
       )
       .then((data) => setAuthor(data[0]))
@@ -42,7 +43,22 @@ export default function About() {
               Howdy! I'm <span className="text-orange">{author.name}</span>
             </h1>
             <div className="prose lg:prose-xl text-white">
-                <BlockContent blocks={author.bio} projectId="dbnnjc3i" dataset="production"/>
+              <BlockContent
+                blocks={author.bio}
+                projectId="dbnnjc3i"
+                dataset="production"
+              />
+              <a
+                href={author.link}
+                rel="noopener noreffer noreferrer"
+                target="_blank"
+                className="text-orange text-bold hover:underline text-xl"
+              >
+                Find my Resume Here{" "}
+                <span role="img" aria-label="right-pointer">
+                  👉
+                </span>
+              </a>
             </div>
           </div>
         </section>
