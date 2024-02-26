@@ -39,8 +39,8 @@ export default function About() {
             alt={author.name}
           />
           <div className="text-lg flex felx-col justify-center">
-            <h1 className="cursive text-6xl text-white mb-4">
-              Howdy! I'm <span className="text-orange">{author.name}</span>
+            <h1 className="cursive text-6xl text-white mb-4 mr-8">
+              Hey! I'm <span className="text-orange">{author.name}</span>
             </h1>
             <div className="prose lg:prose-xl text-white">
               <BlockContent
@@ -49,15 +49,17 @@ export default function About() {
                 dataset="production"
               />
               <a
-                href={author.link}
+                href="https://drive.google.com/file/d/1tpRIsVhYA7a_Oq81p_8uSWieEwn8s6Kv/view?usp=sharing"
                 rel="noopener noreffer noreferrer"
                 target="_blank"
-                className="text-orange text-bold hover:underline text-xl"
+                className="text-bold hover:underline text-xl"
               >
-                Find my Resume Here{" "}
-                <span role="img" aria-label="right-pointer">
-                  👉
-                </span>
+                <p className="text-white">
+                  Find my Resume Here{" "}
+                  <span role="img" aria-label="right-pointer">
+                    👈
+                  </span>
+                </p>
               </a>
             </div>
           </div>
