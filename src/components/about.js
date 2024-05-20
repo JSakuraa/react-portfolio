@@ -49,7 +49,7 @@ export default function About() {
                 dataset="production"
               />
               <a
-                href="https://drive.google.com/file/d/1tpRIsVhYA7a_Oq81p_8uSWieEwn8s6Kv/view?usp=sharing"
+                href="https://drive.google.com/file/d/12ZF7ggFo_8JnGr-oR1sTsPfKLN-Y4HTi/view?usp=sharing"
                 rel="noopener noreffer noreferrer"
                 target="_blank"
                 className="text-bold hover:underline text-xl"
