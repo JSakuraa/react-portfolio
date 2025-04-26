@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Post from "./components/Post";
-import Project from "./components/Project";
 import SingleProject from "./components/SingleProject.jsx";
 import About from "./components/about";
 import Home from "./components/home";
@@ -18,8 +17,7 @@ function App() {
         <Route element={<SinglePost />} path="/post/:slug" />
         <Route element={<SingleProject />} path="/project/:slug" />
         <Route element={<Post />} path="/post" />
-        <Route element={<Project />} path="/project" />
-        <Route element={<ProjectsMasonry />} path="/projectsMasonry" />
+        <Route element={<ProjectsMasonry />} path="/project" />
       </Routes>
     </BrowserRouter>
   );

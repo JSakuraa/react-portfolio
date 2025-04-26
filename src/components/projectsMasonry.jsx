@@ -53,7 +53,9 @@ export default function ProjectsMasonry() {
                                 />
                                 <div className="p-6">
                                     <h3 className="text-2xl font-bold text-charcoal-darkest mb-2 hover:text-orange transition-colors">
-                                        {project.title}
+                                        <Link to={`/project/${project.slug.current}`}>
+                                            {project.title}
+                                        </Link>
                                     </h3>
                                     <p className="text-charcoal text-sm mb-4">
                                         {project.description}

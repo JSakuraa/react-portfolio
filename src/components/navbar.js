@@ -20,7 +20,7 @@ export default function Example() {
             About Me
           </NavLink>
           <NavLink
-            to="/projectsMasonry"
+            to="/project"
             className="inline-flex items-center py-2 px-2 my-6 rounded text-charcoal hover:text-orange text-sm lg:text-base"
           >
             Projects
