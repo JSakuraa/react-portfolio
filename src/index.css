@@ -1,11 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
 
 .cursive {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
+}
+
+body {
+    font-family: 'Libre Baskerville', serif;
 }
 
 .prose img {

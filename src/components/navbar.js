@@ -8,39 +8,22 @@ export default function Example() {
         <nav className="flex">
           <NavLink
             to=""
-            exact
-            activeClassName="text-white"
-            className="inflex-flex items-center py-6 px-3 mr-4 text-white hover:text-orange text-3xl font-bold cursive tracking-widest lg:text-4xl"
+            exact="true"
+            className="inflex-flex items-center py-6 px-3 mr-4 text-charcoal hover:text-orange text-3xl font-bold cursive tracking-widest lg:text-4xl"
           >
             Justin
           </NavLink>
           <NavLink
             to="/about"
-            className="inline-flex items-center py-2 px-2 my-6 rounded text-white hover:text-orange text-sm lg:text-base"
-            activeClassName="text-white bg-primary"
+            className="inline-flex items-center py-2 px-2 my-6 rounded text-charcoal hover:text-orange text-sm lg:text-base"
           >
             About Me
           </NavLink>
           <NavLink
-            to="/post"
-            className="inline-flex items-center py-2 px-2 my-6 rounded text-white hover:text-orange text-sm lg:text-base"
-            activeClassName="text-white bg-primary"
-          >
-            Blog Posts
-          </NavLink>
-          <NavLink
-            to="/project"
-            className="inline-flex items-center py-2 px-2 my-6 rounded text-white hover:text-orange text-sm lg:text-base"
-            activeClassName="text-white bg-primary"
+            to="/projectsMasonry"
+            className="inline-flex items-center py-2 px-2 my-6 rounded text-charcoal hover:text-orange text-sm lg:text-base"
           >
             Projects
-          </NavLink>
-          <NavLink
-            to="/work"
-            className="inline-flex items-center py-2 px-2 my-6 rounded text-white hover:text-orange text-sm lg:text-base"
-            activeClassName="text-white bg-primary"
-          >
-            Pricing
           </NavLink>
         </nav>
       </div>

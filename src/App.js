@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Post from "./components/Post";
 import Project from "./components/Project";
-import SingleProject from "./components/SingleProject";
+import SingleProject from "./components/SingleProject.jsx";
 import About from "./components/about";
 import Home from "./components/home";
 import NavBar from "./components/navbar";
 import SinglePost from "./components/singlepost";
-import Prices from "./components/work";
+import ProjectsMasonry from "./components/projectsMasonry";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route element={<SingleProject />} path="/project/:slug" />
         <Route element={<Post />} path="/post" />
         <Route element={<Project />} path="/project" />
-        <Route element={<Prices />} path="/work" />
+        <Route element={<ProjectsMasonry />} path="/projectsMasonry" />
       </Routes>
     </BrowserRouter>
   );

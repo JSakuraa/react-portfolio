@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
-const words = ["Developer", "Designer", "Video Game Enthusiast", "Entreprenuer"];
+import { motion } from "framer-motion"; // Importing framer-motion for animations
+
+const words = ["Developer", "Designer", "Video Game Enthusiast", "Entrepreneur"];
 
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -8,7 +10,7 @@ export default function Home() {
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
 
-  // typeWriter
+  // typeWriter effect
   useEffect(() => {
     if (index === words.length) return;
     if (
@@ -33,7 +35,7 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse]);
 
-  // blinker
+  // Blinking effect for the cursor
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
@@ -43,15 +45,63 @@ export default function Home() {
 
   return (
     <main className="bg-primary">
-      <section className="felx relative justify-center min-h-screen pt-12 lg:pt-64 px-8">
-        <h1 className="text-7xl py-3 text-white font-bold cursive leading-none lg:leading-snug lg:text-9xl">Justin Nappi</h1>
-        <h1 className="text-5xl py-3 text-orange cursive leading-none lg:leading-snug lg:text-7xl">{`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}</h1>
-        <div>
-            <SocialIcon url="https://www.instagram.com/justinnaps8/" className="mr-4" target="_blank" fgColor="#F9FAFB" stylel={{ height: 35, width: 35 }}/>
-            <SocialIcon url="https://www.linkedin.com/in/justin-t-nappi/" className="mr-4" target="_blank" fgColor="#F9FAFB" stylel={{ height: 35, width: 35 }}/>
-            <SocialIcon url="https://www.youtube.com/c/jsakuraa" className="mr-4" target="_blank" fgColor="#F9FAFB" stylel={{ height: 35, width: 35 }}/>
-            <SocialIcon url="https://github.com/JSakuraa" className="mr-4" target="_blank" fgColor="#F9FAFB" stylel={{ height: 35, width: 35 }}/>
-        </div>
+      <section className="flex flex-col text-left justify-center min-h-screen pt-8 px-8">
+        {/* Title Animation */}
+        <motion.h1
+          className="text-7xl py-3 text-charcoal font-bold cursive leading-none lg:leading-snug lg:text-9xl"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Justin Nappi
+        </motion.h1>
+
+        {/* Typewriter Effect with Animation */}
+        <motion.h1
+          className="text-5xl py-3 text-orange cursive leading-none lg:leading-snug lg:text-7xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+        </motion.h1>
+
+        {/* Social Icons with Animation */}
+        <motion.div
+          className="flex justify-start mt-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+        >
+          <SocialIcon
+            url="https://www.instagram.com/justinnaps8/"
+            className="mr-4"
+            target="_blank"
+            fgColor="#F9FAFB"
+            style={{ height: 35, width: 35 }}
+          />
+          <SocialIcon
+            url="https://www.linkedin.com/in/justin-t-nappi/"
+            className="mr-4"
+            target="_blank"
+            fgColor="#F9FAFB"
+            style={{ height: 35, width: 35 }}
+          />
+          <SocialIcon
+            url="https://www.youtube.com/c/jsakuraa"
+            className="mr-4"
+            target="_blank"
+            fgColor="#F9FAFB"
+            style={{ height: 35, width: 35 }}
+          />
+          <SocialIcon
+            url="https://github.com/JSakuraa"
+            className="mr-4"
+            target="_blank"
+            fgColor="#F9FAFB"
+            style={{ height: 35, width: 35 }}
+          />
+        </motion.div>
       </section>
     </main>
   );

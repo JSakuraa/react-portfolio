@@ -2,69 +2,88 @@ import BlockContent from "@sanity/block-content-to-react";
 import ImageUrlBuilder from "@sanity/image-url";
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
-import manarola from "../manarola.jpg";
+import { motion } from "framer-motion"; // Importing framer-motion
 
 const builder = ImageUrlBuilder(sanityClient);
 function urlFor(source) {
-  return builder.image(source);
+    return builder.image(source);
 }
 
 export default function About() {
-  const [author, setAuthor] = useState(null);
+    const [author, setAuthor] = useState(null);
 
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "author"]{
+    useEffect(() => {
+        sanityClient
+            .fetch(
+                `*[_type == "author"]{
             name,
             bio,
             "authorImage": image.asset->url,
             resume
         }`
-      )
-      .then((data) => setAuthor(data[0]))
-      .catch(console.error);
-  }, []);
+            )
+            .then((data) => setAuthor(data[0]))
+            .catch(console.error);
+    }, []);
 
-  if (!author) return <div>Loading...</div>;
+    if (!author) return <div>Loading...</div>;
 
-  return (
-    <main className="relative">
-      <img src={manarola} alt="Manarola Italy" className="absolute w-full" />
-      <div className="p-10 lg:pt-48 container mx-auto relative">
-        <section className="bg-dark rounded-lg shadow-2xl lg:flex p-20">
-          <img
-            src={urlFor(author.authorImage).url()}
-            className="rounded w-32 h-32 lg:w-64 lg:h-64 mr-8"
-            alt={author.name}
-          />
-          <div className="text-lg flex felx-col justify-center">
-            <h1 className="cursive text-6xl text-white mb-4 mr-8">
-              Hey! I'm <span className="text-orange">{author.name}</span>
-            </h1>
-            <div className="prose lg:prose-xl text-white">
-              <BlockContent
-                blocks={author.bio}
-                projectId="dbnnjc3i"
-                dataset="production"
-              />
-              <a
-                href="https://drive.google.com/file/d/12ZF7ggFo_8JnGr-oR1sTsPfKLN-Y4HTi/view?usp=sharing"
-                rel="noopener noreffer noreferrer"
-                target="_blank"
-                className="text-bold hover:underline text-xl"
-              >
-                <p className="text-white">
-                  Find my Resume Here{" "}
-                  <span role="img" aria-label="right-pointer">
-                    👈
-                  </span>
-                </p>
-              </a>
+    return (
+        <main className="relative bg-primary min-h-screen flex items-center justify-center py-12">
+            <div className="container mx-auto px-6 lg:px-20">
+                <motion.section
+                    className="bg-dark rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row items-center lg:items-start p-8 lg:p-12"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    {/* Image */}
+                    <motion.img
+                        src={urlFor(author.authorImage).url()}
+                        alt={author.name}
+                        className="rounded-full w-32 h-32 lg:w-64 lg:h-64 object-cover mb-6 lg:mb-0 lg:mr-12"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                    />
+
+                    <div className="flex-1 text-center lg:text-left">
+                        <motion.h1
+                            className="cursive text-4xl lg:text-6xl text-charcoal-darkest mb-6"
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                        >
+                            Hey! I'm <span className="text-orange">{author.name}</span>
+                        </motion.h1>
+
+                        <motion.div
+                            className="prose prose-lg text-charcoal mx-auto lg:mx-0 mb-6"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                        >
+                            <BlockContent
+                                blocks={author.bio}
+                                projectId="dbnnjc3i"
+                                dataset="production"
+                            />
+                        </motion.div>
+
+                        <motion.a
+                            href="https://drive.google.com/file/d/1eJJCePkKDM-uS4xBgLLmrxejR6_QHIRX/view?usp=sharing"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            className="inline-block text-orange border border-orange px-6 py-3 rounded-full hover:bg-orange hover:text-white transition-all text-lg font-semibold"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.6 }}
+                        >
+                            View My Resume →
+                        </motion.a>
+                    </div>
+                </motion.section>
             </div>
-          </div>
-        </section>
-      </div>
-    </main>
-  );
+        </main>
+    );
 }
