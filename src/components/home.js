@@ -88,7 +88,7 @@ export default function Home() {
             style={{ height: 35, width: 35 }}
           />
           <SocialIcon
-            url="https://www.youtube.com/c/jsakuraa"
+            url="https://www.youtube.com/@justinnappi-dev"
             className="mr-4"
             target="_blank"
             fgColor="#F9FAFB"
