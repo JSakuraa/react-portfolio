@@ -1,15 +1,50 @@
-import ImageUrlBuilder from "@sanity/image-url";
-import React, { useEffect, useState } from "react";
+import imageUrlBuilder from "@sanity/image-url";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../client";
-import BlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
+import getYouTubeID from "get-youtube-id";
 
-const builder = ImageUrlBuilder(sanityClient);
+const builder = imageUrlBuilder(sanityClient);
 function urlFor(source) {
   return builder.image(source);
 }
 
-export default function SinglePost ({blocks}) {
+const portableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
+      return (
+        <img
+          src={urlFor(value).url()}
+          alt={value.alt || ""}
+          className="rounded-lg my-4"
+        />
+      );
+    },
+    youtube: ({ value }) => {
+      const id = getYouTubeID(value.url);
+      if (!id) return null;
+      return (
+        <div className="aspect-video my-4">
+          <iframe
+            title="YouTube Video"
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${id}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      );
+    },
+  },
+};
+
+export default function SinglePost() {
   const [singlePost, setSinglePost] = useState(null);
   const { slug } = useParams();
 
@@ -66,10 +101,9 @@ export default function SinglePost ({blocks}) {
           />
         </header>
         <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
-          <BlockContent
-            blocks={singlePost.body}
-            projectId="dbnnjc3i"
-            dataset="production"
+          <PortableText
+            value={singlePost.body}
+            components={portableTextComponents}
           />
         </div>
       </article>

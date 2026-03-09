@@ -1,10 +1,10 @@
-import BlockContent from "@sanity/block-content-to-react";
-import ImageUrlBuilder from "@sanity/image-url";
-import React, { useEffect, useState } from "react";
+import { PortableText } from "@portabletext/react";
+import imageUrlBuilder from "@sanity/image-url";
+import { useEffect, useState } from "react";
 import sanityClient from "../client";
-import { motion } from "framer-motion"; // Importing framer-motion
+import { motion } from "framer-motion";
 
-const builder = ImageUrlBuilder(sanityClient);
+const builder = imageUrlBuilder(sanityClient);
 function urlFor(source) {
     return builder.image(source);
 }
@@ -63,11 +63,7 @@ export default function About() {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.6 }}
                         >
-                            <BlockContent
-                                blocks={author.bio}
-                                projectId="dbnnjc3i"
-                                dataset="production"
-                            />
+                            <PortableText value={author.bio} />
                         </motion.div>
 
                         <motion.a
