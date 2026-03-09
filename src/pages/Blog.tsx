@@ -33,7 +33,7 @@ export default function Blog() {
       <SEO
         title="Blog"
         description="Read articles about development, design, and technology by Justin Nappi."
-        url="/post"
+        url="/blog"
       />
       <main className="min-h-screen p-12 bg-primary">
         <section className="container mx-auto">
@@ -46,7 +46,7 @@ export default function Blog() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <article key={post.slug.current}>
-                <Link to={"/post/" + post.slug.current}>
+                <Link to={"/blog/" + post.slug.current}>
                   <span className="relative block h-64 leading-snug border-l-8 rounded shadow bg-light border-orange">
                     <img
                       src={post.mainImage.asset.url}
