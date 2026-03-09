@@ -5,11 +5,4 @@ import post from './post'
 import project from './project'
 import youtube from './youtube'
 
-export const schemaTypes = [
-  post,
-  author,
-  category,
-  project,
-  blockContent,
-  youtube,
-]
+export const schemaTypes = [post, author, category, project, blockContent, youtube]

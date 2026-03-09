@@ -45,5 +45,30 @@ export default defineType({
     defineArrayMember({
       type: 'youtube',
     }),
+    defineArrayMember({
+      type: 'code',
+      options: {
+        language: 'typescript',
+        languageAlternatives: [
+          { title: 'TypeScript', value: 'typescript' },
+          { title: 'JavaScript', value: 'javascript' },
+          { title: 'JSX', value: 'jsx' },
+          { title: 'TSX', value: 'tsx' },
+          { title: 'HTML', value: 'html' },
+          { title: 'CSS', value: 'css' },
+          { title: 'SCSS', value: 'scss' },
+          { title: 'JSON', value: 'json' },
+          { title: 'Python', value: 'python' },
+          { title: 'Bash', value: 'bash' },
+          { title: 'Shell', value: 'shell' },
+          { title: 'Markdown', value: 'markdown' },
+          { title: 'SQL', value: 'sql' },
+          { title: 'GraphQL', value: 'graphql' },
+          { title: 'YAML', value: 'yaml' },
+          { title: 'Plain Text', value: 'text' },
+        ],
+        withFilename: true,
+      },
+    }),
   ],
 })

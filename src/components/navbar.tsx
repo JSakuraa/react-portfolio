@@ -1,14 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
-export default function Example() {
+export default function NavBar() {
   return (
     <header className="bg-dark">
       <div className="container mx-auto flex justify-between">
         <nav className="flex">
           <NavLink
-            to=""
-            exact="true"
+            to="/"
             className="inflex-flex items-center py-6 px-3 mr-4 text-charcoal hover:text-orange text-3xl font-bold cursive tracking-widest lg:text-4xl"
           >
             Justin
@@ -28,5 +26,5 @@ export default function Example() {
         </nav>
       </div>
     </header>
-  );
+  )
 }
