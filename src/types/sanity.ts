@@ -38,15 +38,35 @@ export interface Category {
   description?: string
 }
 
+export type TechnologyCategory =
+  | 'Frontend'
+  | 'Backend'
+  | 'Database'
+  | 'DevOps'
+  | 'Mobile'
+  | 'Tools'
+  | 'Languages'
+  | 'Frameworks'
+  | 'Other'
+
+export interface Technology {
+  _key: string
+  name: string
+  category: TechnologyCategory
+  svgIcon?: string
+}
+
 export interface Author {
   _id: string
   _type: 'author'
   name: string
+  tagline?: string
   slug: SanitySlug
   image?: SanityImage
   authorImage?: string
   resume?: string
   bio?: PortableTextBlock[]
+  technologies?: Technology[]
 }
 
 export interface Post {
