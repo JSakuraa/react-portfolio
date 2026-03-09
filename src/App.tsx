@@ -1,6 +1,14 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home, About, Blog, BlogPost, Projects, Project, Studio } from './pages'
-import { NavBar } from './components'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  Home,
+  About,
+  Blog,
+  BlogPost,
+  Projects,
+  Project,
+  Studio,
+} from "./pages";
+import { NavBar } from "./components";
 
 function App() {
   return (
@@ -15,9 +23,9 @@ function App() {
               <Routes>
                 <Route element={<Home />} path="/" />
                 <Route element={<About />} path="/about" />
-                <Route element={<BlogPost />} path="/post/:slug" />
+                <Route element={<BlogPost />} path="/blog/:slug" />
                 <Route element={<Project />} path="/project/:slug" />
-                <Route element={<Blog />} path="/post" />
+                <Route element={<Blog />} path="/blog" />
                 <Route element={<Projects />} path="/project" />
               </Routes>
             </>
@@ -25,7 +33,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
